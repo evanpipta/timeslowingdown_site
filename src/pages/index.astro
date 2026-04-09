@@ -81,26 +81,35 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-  /* Artist name — Oswald */
+  /* Artist name — Bitcount Single Ink */
   .artist-name {
-    font-family: "Oswald", sans-serif;
+    font-family: "Bitcount Single Ink", system-ui;
     font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 400;
     font-style: normal;
+    font-variation-settings:
+      "slnt" 0,
+      "CRSV" 0.5,
+      "ELSH" 0,
+      "ELXP" 0,
+      "SZP1" 0,
+      "SZP2" 0,
+      "XPN1" 0,
+      "XPN2" 0,
+      "YPN1" 0,
+      "YPN2" 0;
     font-size: 2.5rem;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: -0.04em;
     color: #ffffff;
-    text-shadow:
-      -2px 0 rgba(255, 0, 60, 0.6),
-      2px 0 rgba(0, 200, 255, 0.6);
-    transition: text-shadow 0.2s;
+    filter: grayscale(1) brightness(3);
+    transition: text-shadow 0.2s, filter 0.2s;
   }
 
   .artist-name:hover {
     text-shadow:
-      -3.5px 0 rgba(255, 0, 60, 0.75),
-      3.5px 0 rgba(0, 200, 255, 0.75);
+      -3.5px 0 rgba(255, 255, 255, 0.75),
+      3.5px 0 rgba(255, 255, 255, 0.75);
   }
 
   /* Page layout */
@@ -137,8 +146,8 @@ import Layout from "../layouts/Layout.astro";
     margin-bottom: 1rem;
     text-align: center;
     text-shadow:
-      -1px 0 rgba(255, 0, 60, 0.55),
-      1px 0 rgba(0, 200, 255, 0.55);
+      -1px 0 rgba(255, 255, 255, 0.55),
+      1px 0 rgba(255, 255, 255, 0.55);
   }
 
   /* Links section */
@@ -167,22 +176,22 @@ import Layout from "../layouts/Layout.astro";
     opacity: 0.8;
     transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s, text-shadow 0.2s;
     text-shadow:
-      -1px 0 rgba(255, 0, 60, 0.5),
-      1px 0 rgba(0, 200, 255, 0.5);
+      -1px 0 rgba(255, 255, 255, 0.5),
+      1px 0 rgba(255, 255, 255, 0.5);
     box-shadow:
-      -1px 0 0 rgba(255, 0, 60, 0.4),
-      1px 0 0 rgba(0, 200, 255, 0.4);
+      -1px 0 0 rgba(255, 255, 255, 0.4),
+      1px 0 0 rgba(255, 255, 255, 0.4);
   }
 
   .link-row:hover {
     opacity: 1;
     border-color: rgba(255, 255, 255, 0.5);
     text-shadow:
-      -2px 0 rgba(255, 0, 60, 0.65),
-      2px 0 rgba(0, 200, 255, 0.65);
+      -2px 0 rgba(255, 255, 255, 0.65),
+      2px 0 rgba(255, 255, 255, 0.65);
     box-shadow:
-      -2.5px 0 0 rgba(255, 0, 60, 0.6),
-      2.5px 0 0 rgba(0, 200, 255, 0.6);
+      -2.5px 0 0 rgba(255, 255, 255, 0.6),
+      2.5px 0 0 rgba(255, 255, 255, 0.6);
   }
 
   /* Contact section */
@@ -198,15 +207,15 @@ import Layout from "../layouts/Layout.astro";
     opacity: 0.8;
     transition: opacity 0.2s, text-shadow 0.2s;
     text-shadow:
-      -1px 0 rgba(255, 0, 60, 0.5),
-      1px 0 rgba(0, 200, 255, 0.5);
+      -1px 0 rgba(255, 255, 255, 0.5),
+      1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .contact-email:hover {
     opacity: 1;
     text-shadow:
-      -2px 0 rgba(255, 0, 60, 0.65),
-      2px 0 rgba(0, 200, 255, 0.65);
+      -2px 0 rgba(255, 255, 255, 0.65),
+      2px 0 rgba(255, 255, 255, 0.65);
   }
 
   .contact-location {
@@ -214,8 +223,8 @@ import Layout from "../layouts/Layout.astro";
     opacity: 0.5;
     text-transform: lowercase;
     text-shadow:
-      -1px 0 rgba(255, 0, 60, 0.45),
-      1px 0 rgba(0, 200, 255, 0.45);
+      -1px 0 rgba(255, 255, 255, 0.45),
+      1px 0 rgba(255, 255, 255, 0.45);
   }
 
   /* Responsive */
