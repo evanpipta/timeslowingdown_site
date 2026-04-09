@@ -103,13 +103,24 @@ import Layout from "../layouts/Layout.astro";
     letter-spacing: -0.04em;
     color: #ffffff;
     filter: grayscale(1) brightness(3);
-    transition: text-shadow 0.2s, filter 0.2s;
+    animation: lfo 0.5s ease-in-out infinite;
   }
 
   .artist-name:hover {
     text-shadow:
       -3.5px 0 rgba(255, 255, 255, 0.75),
       3.5px 0 rgba(255, 255, 255, 0.75);
+  }
+
+  @keyframes lfo {
+    0%, 100% {
+      text-shadow: none;
+    }
+    50% {
+      text-shadow:
+        -3px 0 rgba(255, 255, 255, 0.7),
+        3px 0 rgba(255, 255, 255, 0.7);
+    }
   }
 
   /* Page layout */
