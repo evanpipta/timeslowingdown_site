@@ -94,6 +94,13 @@ import Layout from "../layouts/Layout.astro";
     text-shadow:
       -2px 0 rgba(255, 0, 60, 0.6),
       2px 0 rgba(0, 200, 255, 0.6);
+    transition: text-shadow 0.2s;
+  }
+
+  .artist-name:hover {
+    text-shadow:
+      -3.5px 0 rgba(255, 0, 60, 0.75),
+      3.5px 0 rgba(0, 200, 255, 0.75);
   }
 
   /* Page layout */
@@ -158,7 +165,7 @@ import Layout from "../layouts/Layout.astro";
     font-size: 0.9rem;
     letter-spacing: 0.04em;
     opacity: 0.8;
-    transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s;
+    transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s, text-shadow 0.2s;
     text-shadow:
       -1px 0 rgba(255, 0, 60, 0.5),
       1px 0 rgba(0, 200, 255, 0.5);
@@ -170,9 +177,12 @@ import Layout from "../layouts/Layout.astro";
   .link-row:hover {
     opacity: 1;
     border-color: rgba(255, 255, 255, 0.5);
+    text-shadow:
+      -2px 0 rgba(255, 0, 60, 0.65),
+      2px 0 rgba(0, 200, 255, 0.65);
     box-shadow:
-      -2px 0 0 rgba(255, 0, 60, 0.55),
-      2px 0 0 rgba(0, 200, 255, 0.55);
+      -2.5px 0 0 rgba(255, 0, 60, 0.6),
+      2.5px 0 0 rgba(0, 200, 255, 0.6);
   }
 
   /* Contact section */
@@ -186,7 +196,7 @@ import Layout from "../layouts/Layout.astro";
   .contact-email {
     font-size: 0.95rem;
     opacity: 0.8;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, text-shadow 0.2s;
     text-shadow:
       -1px 0 rgba(255, 0, 60, 0.5),
       1px 0 rgba(0, 200, 255, 0.5);
@@ -194,6 +204,9 @@ import Layout from "../layouts/Layout.astro";
 
   .contact-email:hover {
     opacity: 1;
+    text-shadow:
+      -2px 0 rgba(255, 0, 60, 0.65),
+      2px 0 rgba(0, 200, 255, 0.65);
   }
 
   .contact-location {
