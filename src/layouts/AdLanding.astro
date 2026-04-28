@@ -56,29 +56,52 @@ const socialLinks = [
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Meta Pixel -->
     <script is:inline define:vars={{ trackName }}>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
 
-      fbq('init', '969571118877327');
-      fbq('track', 'PageView');
-      fbq('track', 'ViewContent', {
+      fbq("init", "969571118877327");
+      fbq("set", "autoConfig", "false");
+      fbq("track", "PageView");
+      fbq("track", "ViewContent", {
         content_name: trackName,
-        content_category: 'music'
+        content_category: "music",
       });
     </script>
     <noscript>
-      <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=969571118877327&ev=PageView&noscript=1" />
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=969571118877327&ev=PageView&noscript=1"
+      />
     </noscript>
 
     <slot name="head" />
@@ -119,41 +142,52 @@ const socialLinks = [
       </div>
 
       <nav class="social-icons" aria-label="Social media">
-        {socialLinks.map((link) => (
-          <a
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-icon"
-            aria-label={link.name}
-            data-track={`social-${link.name.toLowerCase()}`}
-          >
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-              <Fragment set:html={link.icon} />
-            </svg>
-          </a>
-        ))}
+        {
+          socialLinks.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon"
+              aria-label={link.name}
+              data-track={`social-${link.name.toLowerCase()}`}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <Fragment set:html={link.icon} />
+              </svg>
+            </a>
+          ))
+        }
       </nav>
     </main>
 
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', function () {
+      document.addEventListener("DOMContentLoaded", function () {
         var cta = document.querySelector('[data-track="cta-spotify"]');
         if (cta) {
-          cta.addEventListener('click', function () {
-            fbq('track', 'Lead', {
-              content_name: cta.closest('.landing').querySelector('.track-name').textContent,
-              content_category: 'spotify_cta'
+          cta.addEventListener("click", function () {
+            fbq("track", "Lead", {
+              content_name: cta.closest(".landing").querySelector(".track-name")
+                .textContent,
+              content_category: "spotify_cta",
             });
           });
         }
 
-        var socials = document.querySelectorAll('.social-icon[data-track]');
+        var socials = document.querySelectorAll(".social-icon[data-track]");
         socials.forEach(function (link) {
-          link.addEventListener('click', function () {
-            fbq('trackCustom', 'SocialClick', {
-              platform: link.getAttribute('aria-label'),
-              content_name: link.closest('.landing').querySelector('.track-name').textContent
+          link.addEventListener("click", function () {
+            fbq("trackCustom", "SocialClick", {
+              platform: link.getAttribute("aria-label"),
+              content_name: link
+                .closest(".landing")
+                .querySelector(".track-name").textContent,
             });
           });
         });
@@ -179,8 +213,15 @@ const socialLinks = [
     overflow-x: hidden;
     background-color: #000000;
     color: #ffffff;
-    font-family: "Oswald", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, sans-serif;
+    font-family:
+      "Oswald",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
     line-height: 1.5;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -315,7 +356,9 @@ const socialLinks = [
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.2);
     opacity: 0.5;
-    transition: opacity 0.2s, border-color 0.2s;
+    transition:
+      opacity 0.2s,
+      border-color 0.2s;
   }
 
   .social-icon:hover {
