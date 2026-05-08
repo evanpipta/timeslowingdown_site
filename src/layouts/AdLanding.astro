@@ -123,26 +123,26 @@ const socialLinks = [
           <h1 class="track-name">{trackName}</h1>
         </div>
 
-        {spotifyUrl ? (
-          <a
-            href={spotifyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cta-button"
-            data-track="cta-spotify"
-          >
-            <img
-              src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png"
-              alt="Spotify"
-              class="spotify-logo"
-              width="24"
-              height="24"
-            />
-            <span>Listen on Spotify</span>
-          </a>
-        ) : (
-          <p class="coming-soon">Coming Soon</p>
-        )}
+        {
+          spotifyUrl ? (
+            <a
+              href={spotifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-button"
+              data-track="cta-spotify"
+            >
+              <img
+                src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Black.png"
+                alt="Spotify"
+                class="spotify-logo"
+              />
+              <span>Play on Spotify</span>
+            </a>
+          ) : (
+            <p class="coming-soon">Coming Soon</p>
+          )
+        }
       </div>
 
       <!-- social icons hidden for now -->
@@ -182,15 +182,7 @@ const socialLinks = [
     overflow-x: hidden;
     background-color: #000000;
     color: #ffffff;
-    font-family:
-      "Oswald",
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      "Helvetica Neue",
-      Arial,
-      sans-serif;
+    font-family: "Oswald", "Helvetica Neue", Arial, sans-serif;
     line-height: 1.5;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -255,7 +247,7 @@ const socialLinks = [
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 0px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
   }
 
@@ -264,32 +256,32 @@ const socialLinks = [
   }
 
   .artist-name {
-    font-size: 0.85rem;
-    font-weight: 300;
+    font-size: 1rem;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    opacity: 0.6;
+    letter-spacing: 0.05rem;
+    opacity: 0.7;
     margin-bottom: 0.25rem;
   }
 
   .track-name {
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 500;
-    letter-spacing: 0.02em;
+    /* letter-spacing: 0.02em; */
   }
 
   .cta-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
-    padding: 0.9rem 2.25rem;
+    padding: 1rem 2.25rem;
     background: #1db954;
-    color: #fff;
+    color: #000;
     border-radius: 500px;
     font-family: inherit;
-    font-size: 1.15rem;
+    font-size: 1.75rem;
     font-weight: 500;
-    letter-spacing: 0.03em;
     transition: background 0.2s;
     white-space: nowrap;
   }
@@ -303,9 +295,10 @@ const socialLinks = [
   }
 
   .spotify-logo {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
+    margin-right: 0.5rem;
     flex-shrink: 0;
   }
 
