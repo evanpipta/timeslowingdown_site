@@ -132,12 +132,13 @@ const socialLinks = [
               class="cta-button"
               data-track="cta-spotify"
             >
-              <img
+              {/* <img
                 src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Black.png"
                 alt="Spotify"
                 class="spotify-logo"
-              />
-              <span>Play on Spotify</span>
+              /> */}
+              <span class="cta-button-text">Play On Spotify</span>
+              <span class="play-button" />
             </a>
           ) : (
             <p class="coming-soon">Coming Soon</p>
@@ -258,7 +259,7 @@ const socialLinks = [
   .artist-name {
     font-size: 1rem;
     font-weight: 400;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 0.05rem;
     opacity: 0.7;
     margin-bottom: 0.25rem;
@@ -271,27 +272,55 @@ const socialLinks = [
   }
 
   .cta-button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1rem 2.25rem;
-    background: #1db954;
-    color: #000;
-    border-radius: 500px;
+    width: 100%;
+    max-width: 500px;
+    padding: 0.75rem 1.25rem;
+    background: rgba(108, 108, 114, 0.25);
+    color: #fff;
+    border-radius: 0.5rem;
     font-family: inherit;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 500;
     transition: background 0.2s;
     white-space: nowrap;
   }
 
+  .cta-button-text {
+    position: relative;
+    top: -1px;
+  }
+
   .cta-button:hover {
-    background: #1ed760;
+    background: rgb(59, 59, 60);
   }
 
   .cta-button:active {
-    background: #19a34a;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .play-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1db954;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .play-button::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 0 12px 21px;
+    border-color: transparent transparent transparent #000;
+    margin-left: 3px;
   }
 
   .spotify-logo {
