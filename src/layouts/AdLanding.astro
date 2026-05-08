@@ -145,30 +145,7 @@ const socialLinks = [
         )}
       </div>
 
-      <nav class="social-icons" aria-label="Social media">
-        {
-          socialLinks.map((link) => (
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-icon"
-              aria-label={link.name}
-              data-track={`social-${link.name.toLowerCase()}`}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <Fragment set:html={link.icon} />
-              </svg>
-            </a>
-          ))
-        }
-      </nav>
+      <!-- social icons hidden for now -->
     </main>
 
     <script is:inline>
@@ -176,25 +153,13 @@ const socialLinks = [
         var cta = document.querySelector('[data-track="cta-spotify"]');
         if (cta) {
           cta.addEventListener("click", function () {
-            fbq("track", "Lead", {
+            fbq("trackCustom", "SocialClick", {
+              platform: "Spotify",
               content_name: cta.closest(".landing").querySelector(".track-name")
                 .textContent,
-              content_category: "spotify_cta",
             });
           });
         }
-
-        var socials = document.querySelectorAll(".social-icon[data-track]");
-        socials.forEach(function (link) {
-          link.addEventListener("click", function () {
-            fbq("trackCustom", "SocialClick", {
-              platform: link.getAttribute("aria-label"),
-              content_name: link
-                .closest(".landing")
-                .querySelector(".track-name").textContent,
-            });
-          });
-        });
       });
     </script>
   </body>
