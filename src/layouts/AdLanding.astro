@@ -152,15 +152,48 @@ const socialLinks = [
     <script is:inline>
       document.addEventListener("DOMContentLoaded", function () {
         var cta = document.querySelector('[data-track="cta-spotify"]');
-        if (cta) {
-          cta.addEventListener("click", function () {
-            fbq("trackCustom", "SocialClick", {
-              platform: "Spotify",
-              content_name: cta.closest(".landing").querySelector(".track-name")
-                .textContent,
-            });
+        if (!cta) return;
+
+        cta.addEventListener("click", function (e) {
+          fbq("trackCustom", "SocialClick", {
+            platform: "Spotify",
+            content_name: cta.closest(".landing").querySelector(".track-name")
+              .textContent,
           });
-        }
+
+          var href = cta.getAttribute("href");
+          var match = href && href.match(/\/track\/([a-zA-Z0-9]+)/);
+          if (!match) return;
+
+          var trackId = match[1];
+          var ua = navigator.userAgent;
+
+          if (/android/i.test(ua)) {
+            e.preventDefault();
+            window.location.href =
+              "intent://open.spotify.com/track/" +
+              trackId +
+              "#Intent;package=com.spotify.music;scheme=https;end";
+          } else if (/iphone|ipad|ipod/i.test(ua)) {
+            e.preventDefault();
+            var fallbackTimeout;
+
+            function onVisChange() {
+              if (document.hidden) {
+                clearTimeout(fallbackTimeout);
+                document.removeEventListener("visibilitychange", onVisChange);
+              }
+            }
+
+            document.addEventListener("visibilitychange", onVisChange);
+            window.location.href = "spotify://track/" + trackId;
+
+            fallbackTimeout = setTimeout(function () {
+              document.removeEventListener("visibilitychange", onVisChange);
+              window.location.href = href;
+            }, 1500);
+          }
+        });
       });
     </script>
   </body>
