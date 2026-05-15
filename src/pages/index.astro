@@ -18,6 +18,7 @@ import Layout from "../layouts/Layout.astro";
           target="_blank"
           rel="noopener noreferrer"
           class="link-row"
+          data-spotify-link
         >
           <svg
             viewBox="0 0 24 24"
@@ -135,27 +136,56 @@ import Layout from "../layouts/Layout.astro";
       <p class="contact-location">Based in Los Angeles</p>
     </section>
   </main>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+      var link = document.querySelector("[data-spotify-link]");
+      if (!link) return;
+
+      link.addEventListener("click", function (e) {
+        var href = link.getAttribute("href");
+        var match = href && href.match(/\/(artist|track|album)\/([a-zA-Z0-9]+)/);
+        if (!match) return;
+
+        var type = match[1];
+        var id = match[2];
+        var ua = navigator.userAgent;
+
+        if (/android/i.test(ua)) {
+          e.preventDefault();
+          window.location.href =
+            "intent://open.spotify.com/" + type + "/" + id +
+            "#Intent;package=com.spotify.music;scheme=https;end";
+        } else if (/iphone|ipad|ipod/i.test(ua)) {
+          e.preventDefault();
+          var fallbackTimeout;
+
+          function onVisChange() {
+            if (document.hidden) {
+              clearTimeout(fallbackTimeout);
+              document.removeEventListener("visibilitychange", onVisChange);
+            }
+          }
+
+          document.addEventListener("visibilitychange", onVisChange);
+          window.location.href = "spotify://" + type + "/" + id;
+
+          fallbackTimeout = setTimeout(function () {
+            document.removeEventListener("visibilitychange", onVisChange);
+            window.location.href = href;
+          }, 1500);
+        }
+      });
+    });
+  </script>
 </Layout>
 
 <style>
-  /* Artist name — Bitcount Single Ink */
   .artist-name {
-    font-family: "Bitcount Single Ink", system-ui;
-    font-optical-sizing: auto;
+    font-family: "BBH Bartle", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-variation-settings:
-      "slnt" 0,
-      "CRSV" 0.5,
-      "ELSH" 0,
-      "ELXP" 0,
-      "SZP1" 0,
-      "SZP2" 0,
-      "XPN1" 0,
-      "XPN2" 0,
-      "YPN1" 0,
-      "YPN2" 0;
-    font-size: 2.5rem;
+    font-size: 1rem;
     text-transform: lowercase;
     letter-spacing: -0.04em;
     color: #ffffff;
