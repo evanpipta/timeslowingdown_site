@@ -10,14 +10,20 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="timeslowingdown — electronic music artist based in Los Angeles" />
+    <meta
+      name="description"
+      content="timeslowingdown — electronic music artist based in Los Angeles"
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
 
     <!-- Bitcount Single Ink + Oswald -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <slot />
@@ -39,13 +45,12 @@ const { title } = Astro.props;
 
   body {
     overflow-x: hidden;
-    background:
-      url("/bg.png")
-      center / cover no-repeat scroll;
+    background: url("/bg3.jpg") center / cover no-repeat scroll;
     background-color: #000000;
     color: #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Arial, sans-serif;
     line-height: 1.5;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -65,7 +70,13 @@ const { title } = Astro.props;
     transform: translateX(-50%);
     width: 1000px;
     height: 100%;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0)
+    );
     pointer-events: none;
     z-index: 0;
   }
